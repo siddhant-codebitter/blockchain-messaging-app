@@ -1,6 +1,6 @@
 // Configuration
 const GANACHE_URL = 'http://127.0.0.1:8545';
-const CONTRACT_ADDRESS = '0x52056dd0568479aFD9612249d1a16a5230825E66'; // <--- PASTE NEW ADDRESS HERE !!!
+const CONTRACT_ADDRESS = '<Address of Deployed Contract>'; // <--- PASTE NEW ADDRESS HERE !!!
 
 let web3;
 let contract;
