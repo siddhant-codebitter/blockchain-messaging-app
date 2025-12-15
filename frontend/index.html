@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain Messaging App</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="chat-container" class="container">
+        <div id="user-list">
+            <h3 style="padding: 10px; border-bottom: 1px solid #ccc;">Contacts</h3>
+            <div id="contacts-container">
+                <div style="padding:10px; color:#666; font-size:0.9em;">Search user above to chat</div>
+            </div>
+            <div style="padding: 10px; border-top: 1px solid #ccc;">
+                <input type="text" id="recipient-search" placeholder="Enter Username to Chat">
+                <button onclick="startChat()" style="margin-top:5px;">Add/Chat</button>
+            </div>
+        </div>
+
+        <div id="chat-area">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding-bottom:10px;">
+                <h3 id="chat-with-header" style="margin:0;">Select a user</h3>
+                <button onclick="logout()" style="width:auto; padding:5px 10px; background:#d9534f;">Logout</button>
+            </div>
+            
+            <div id="messages">
+                </div>
+
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button onclick="sendMessageUI()" style="width: 80px;">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script> 
+    
+    <script src="assets/js/blockchain-client.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        // Check Session
+        if(!sessionStorage.getItem('privateKey')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

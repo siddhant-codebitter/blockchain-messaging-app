@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Blockchain Chat</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <div class="link">New user? <a href="signup.html">Sign Up</a></div>
+        <div id="status" style="margin-top: 10px; color: red; text-align: center;"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="assets/js/auth-client.js"></script>
+    <script>
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const statusDiv = document.getElementById('status');
+
+            statusDiv.style.color = 'blue';
+            statusDiv.innerText = "Verifying & Decrypting Key...";
+
+            try {
+                const result = await loginUser(username, password);
+                if(result.success) {
+                    statusDiv.style.color = 'green';
+                    statusDiv.innerText = "Decryption Successful! Entering Chat...";
+                    // Store session info roughly (In production use secure cookies/tokens)
+                    sessionStorage.setItem('username', username);
+                    sessionStorage.setItem('privateKey', result.privateKey);
+                    sessionStorage.setItem('ethAddress', result.ethAddress);
+                    setTimeout(() => window.location.href = 'index.html', 1000);
+                } else {
+                    statusDiv.style.color = 'red';
+                    statusDiv.innerText = result.message;
+                }
+            } catch (e) {
+                statusDiv.innerText = "Error: " + e.message;
+            }
+        }
+    </script>
+</body>
+</html>

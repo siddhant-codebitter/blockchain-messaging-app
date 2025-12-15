@@ -1,0 +1,15 @@
+# ----------------------------------------
+# Global ignores
+# Ignore common OS and editor files (optional but recommended)
+.DS_Store
+*.swp
+
+# ----------------------------------------
+# Backend Ignores (Applies to the 'backend' directory only)
+
+# Ignore the 'node_modules' directory inside the 'backend' folder
+backend/node_modules/
+
+# Ignore the specific files inside the 'backend' folder
+backend/package-lock.json
+backend/.env

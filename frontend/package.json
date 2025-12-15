@@ -1,0 +1,11 @@
+{
+  "name": "blockchain-messaging-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Blockchain Messaging App",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.5"
+  }
+}

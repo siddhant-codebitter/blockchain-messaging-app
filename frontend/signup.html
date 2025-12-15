@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Blockchain Chat</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Create Account</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="signup()">Sign Up</button>
+        <div class="link">Already have an account? <a href="login.html">Login</a></div>
+        <div id="status" style="margin-top: 10px; color: green; text-align: center;"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script src="assets/js/auth-client.js"></script>
+    <script>
+        async function signup() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const statusDiv = document.getElementById('status');
+            
+            statusDiv.style.color = 'blue';
+            statusDiv.innerText = "Generating Wallet & Registering...";
+
+            // Call the signup function from auth-client.js
+            try {
+                const result = await registerUser(username, password);
+                if(result.success) {
+                    statusDiv.style.color = 'green';
+                    statusDiv.innerText = "Success! Redirecting...";
+                    setTimeout(() => window.location.href = 'login.html', 2000);
+                } else {
+                    statusDiv.style.color = 'red';
+                    statusDiv.innerText = "Error: " + result.message;
+                }
+            } catch (e) {
+                statusDiv.style.color = 'red';
+                statusDiv.innerText = "Error: " + e.message;
+            }
+        }
+    </script>
+</body>
+</html>
