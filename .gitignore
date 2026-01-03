@@ -1,10 +1,4 @@
 # ----------------------------------------
-# Global ignores
-# Ignore common OS and editor files (optional but recommended)
-.DS_Store
-*.swp
-
-# ----------------------------------------
 # Backend Ignores (Applies to the 'backend' directory only)
 
 # Ignore the 'node_modules' directory inside the 'backend' folder
